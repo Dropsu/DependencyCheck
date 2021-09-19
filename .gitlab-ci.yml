@@ -3,8 +3,6 @@ stages:
   - acceptance_tests
   - deploy
 
-tags: []
-
 build_zip:
   stage: integration_build
   artifacts:
