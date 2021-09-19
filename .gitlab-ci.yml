@@ -15,8 +15,8 @@ build_docker_image:
   stage: integration_build
   script:
     - mvn -s settings.xml package -DskipTests
-    - ./build-docker.sh
-    - ./test-docker.sh
+    - sudo ./build-docker.sh
+    - sudo ./test-docker.sh
 
 acceptance_tests:
   stage: acceptance_tests
@@ -32,4 +32,4 @@ deploy_zip_file:
 deploy_dockerfile:
   stage: deploy
   script:
-    - docker push gcr.io/feisty-outlet-325816/dependency-check
+    - sudo docker push gcr.io/feisty-outlet-325816/dependency-check
