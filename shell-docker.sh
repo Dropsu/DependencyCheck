@@ -38,11 +38,11 @@ if [ -f "$HOME/OWASP-Dependency-Check/reports/dependency-check-report.json" ]; t
 fi
 
 # Make sure we are using the latest version
-# docker pull owasp/dependency-check
+# docker pull gcr.io/feisty-outlet-325816/dependency-check
 
 docker run -it --rm \
     --volume "$DATA_DIRECTORY":/usr/share/dependency-check/data \
     --volume "$REPORT_DIRECTORY":/report \
     --entrypoint /bin/sh \
-    owasp/dependency-check:$VERSION
+    gcr.io/feisty-outlet-325816/dependency-check:$VERSION
     

@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/org.owasp/dependency-check-maven.svg)](https://mvnrepository.com/artifact/org.owasp/dependency-check-maven) ![Build and Deploy](https://github.com/jeremylong/DependencyCheck/workflows/Build%20and%20Deploy/badge.svg?branch=main) [![Coverity Scan Build Status](https://img.shields.io/coverity/scan/1654.svg)](https://scan.coverity.com/projects/dependencycheck) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6b6021d481dc41a888c5da0d9ecf9494)](https://www.codacy.com/app/jeremylong/DependencyCheck?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jeremylong/DependencyCheck&amp;utm_campaign=Badge_Grade) [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/843/badge)](https://bestpractices.coreinfrastructure.org/projects/843) [![Apache 2.0 License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
+[![Maven Central](https://img.shields.io/maven-central/v/org.gcr.io/feisty-outlet-325816/dependency-check-maven.svg)](https://mvnrepository.com/artifact/org.gcr.io/feisty-outlet-325816/dependency-check-maven) ![Build and Deploy](https://github.com/jeremylong/DependencyCheck/workflows/Build%20and%20Deploy/badge.svg?branch=main) [![Coverity Scan Build Status](https://img.shields.io/coverity/scan/1654.svg)](https://scan.coverity.com/projects/dependencycheck) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6b6021d481dc41a888c5da0d9ecf9494)](https://www.codacy.com/app/jeremylong/DependencyCheck?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jeremylong/DependencyCheck&amp;utm_campaign=Badge_Grade) [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/843/badge)](https://bestpractices.coreinfrastructure.org/projects/843) [![Apache 2.0 License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
 
 [![Black Hat Arsenal](https://raw.githubusercontent.com/toolswatch/badges/master/arsenal/usa/2018.svg?sanitize=true)](http://www.toolswatch.org/2018/05/black-hat-arsenal-usa-2018-the-w0w-lineup/) [![Black Hat Arsenal](https://www.toolswatch.org/badges/arsenal/2015.svg)](https://www.toolswatch.org/2015/06/black-hat-arsenal-usa-2015-speakers-lineup/) [![Black Hat Arsenal](https://www.toolswatch.org/badges/arsenal/2014.svg)](https://www.toolswatch.org/2014/06/black-hat-usa-2014-arsenal-tools-speaker-list/) [![Black Hat Arsenal](https://www.toolswatch.org/badges/arsenal/2013.svg)](https://www.toolswatch.org/2013/06/announcement-blackhat-arsenal-usa-2013-selected-tools/)
 
@@ -149,7 +149,7 @@ if [ ! -d "$CACHE_DIRECTORY" ]; then
 fi
 
 # Make sure we are using the latest version
-docker pull owasp/dependency-check:$DC_VERSION
+docker pull gcr.io/feisty-outlet-325816/dependency-check:$DC_VERSION
 
 docker run --rm \
     -e user=$USER \
@@ -157,7 +157,7 @@ docker run --rm \
     --volume $(pwd):/src:z \
     --volume "$DATA_DIRECTORY":/usr/share/dependency-check/data:z \
     --volume $(pwd)/odc-reports:/report:z \
-    owasp/dependency-check:$DC_VERSION \
+    gcr.io/feisty-outlet-325816/dependency-check:$DC_VERSION \
     --scan /src \
     --format "ALL" \
     --project "$DC_PROJECT" \
@@ -186,13 +186,13 @@ IF NOT EXIST %CACHE_DIRECTORY% (
 )
 
 rem Make sure we are using the latest version
-docker pull owasp/dependency-check:%DC_VERSION%
+docker pull gcr.io/feisty-outlet-325816/dependency-check:%DC_VERSION%
 
 docker run --rm ^
     --volume %CD%:/src ^
     --volume %DATA_DIRECTORY%:/usr/share/dependency-check/data ^
     --volume %CD%/odc-reports:/report ^
-    owasp/dependency-check:%DC_VERSION% ^
+    gcr.io/feisty-outlet-325816/dependency-check:%DC_VERSION% ^
     --scan /src ^
     --format "ALL" ^
     --project "%DC_PROJECT%" ^

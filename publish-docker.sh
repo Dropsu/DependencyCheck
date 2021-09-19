@@ -10,16 +10,16 @@ if [[ $VERSION = *"SNAPSHOT"* ]]; then
   echo "Do not publish a snapshot version of dependency-check"
   exit 1
 fi
-docker inspect --type=image owasp/dependency-check:$VERSION  > /dev/null 2>&1
+docker inspect --type=image gcr.io/feisty-outlet-325816/dependency-check:$VERSION  > /dev/null 2>&1
 if [[ "$?" -ne 0 ]] ; then
-  echo "docker image owasp/dependency-check:$VERSION does not exist - run build_docker.sh first"
+  echo "docker image gcr.io/feisty-outlet-325816/dependency-check:$VERSION does not exist - run build_docker.sh first"
   exit 1
 fi
-docker inspect --type=image owasp/dependency-check:latest  > /dev/null 2>&1
+docker inspect --type=image gcr.io/feisty-outlet-325816/dependency-check:latest  > /dev/null 2>&1
 if [[ "$?" -ne 0 ]] ; then
-  echo "docker image owasp/dependency-check:latest does not exist - run build_docker.sh first"
+  echo "docker image gcr.io/feisty-outlet-325816/dependency-check:latest does not exist - run build_docker.sh first"
   exit 1
 fi
 
-docker push owasp/dependency-check:$VERSION 
-docker push owasp/dependency-check:latest
+docker push gcr.io/feisty-outlet-325816/dependency-check:$VERSION 
+docker push gcr.io/feisty-outlet-325816/dependency-check:latest

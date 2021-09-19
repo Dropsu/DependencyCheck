@@ -1,0 +1,37 @@
+stages:
+  - integration_build
+  - acceptance_tests
+  - deploy
+
+tags: []
+
+build_zip:
+  stage: integration_build
+  artifacts:
+    paths:
+      - cli/target/*.zip
+  script:
+    - mvn -s settings.xml install 
+
+build_docker_image:
+  stage: integration_build
+  script:
+    - mvn -s setting.xml package -DskipTests
+    - ./build-docker.sh
+    - ./test-docker.sh
+
+acceptance_tests:
+  stage: acceptance_tests
+  script:
+    - unzip cli/target/*.zip -d .
+    - dependency-check/bin/dependency-check.sh --out . --scan ./src/test/resources
+
+deploy_zip_file:
+  stage: deploy
+  script:
+    - gsutil cp cli/target/*.zip gs://dsmag-artifacts
+
+deploy_dockerfile:
+  stage: deploy
+  script:
+    - docker push gcr.io/feisty-outlet-325816/dependency-check
