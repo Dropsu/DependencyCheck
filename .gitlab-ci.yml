@@ -14,7 +14,7 @@ build_zip:
 build_docker_image:
   stage: integration_build
   script:
-    - mvn -s setting.xml package -DskipTests
+    - mvn -s settings.xml package -DskipTests
     - ./build-docker.sh
     - ./test-docker.sh
 
