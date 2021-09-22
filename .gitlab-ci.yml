@@ -24,7 +24,7 @@ build_docker_image:
 acceptance_tests:
   stage: acceptance_tests
   script:
-    - unzip cli/target/*.zip -d .
+    - unzip -o cli/target/*.zip -d .
     - dependency-check/bin/dependency-check.sh --out . --scan ./src/test/resources
 
 deploy_zip_file:
